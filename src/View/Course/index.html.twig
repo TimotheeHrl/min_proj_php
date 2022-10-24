@@ -2,12 +2,39 @@
 
 {% block content %}
     <h1>courses</h1>
-    <ul>
-        {% for item in courses %}
-            <li><a href="/courses/show?id={{ course.cid }}">{{ course.cid }}. {{ course.cfull }}</a></li>
-        {% else %}
-            <li>Nothing to display</li>
-        {% endfor %}
-    </ul>
+
+
+    <table>
+        <tbody>
+        <tr>
+            <td>cid</td>
+            <td>fullname </td>
+                        <td>short name </td>
+
+            <td>date </td>
+
+            <td>update </td>
+
+        </tr>
+            {% for course in courses %}
+
+    <!--       <a href="/courses/show?id={{ course.cid }}">{{ course.cid }}. {{ course.cfull }}</a></li> -->
+
+                <tr>
+                    <td>{{ course.cid }}</td>
+                    <td>{{ course.cfull }}</td>
+                    <td>{{ course.cshort }}</td>
+                    <td>{{ course.cdate }}</td>
+                     <td>{{ course.update_date }}</td>
+                    <td>
+                        <a href="/courses/show?id={{ course.cid }}">show</a>
+                        <a href="/courses/edit?id={{ course.cid }}">edit</a>
+                        <a href="/courses/delete?id={{ course.cid }}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
     <a href="/courses/add">Ajouter</a>
 {% endblock %}

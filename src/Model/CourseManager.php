@@ -6,7 +6,7 @@ use PDO;
 
 class CourseManager extends AbstractManager
 {
-    public const TABLE = 'item';
+    public const TABLE = 'tbl_course';
 
     /**
      * Insert new item in database
@@ -25,7 +25,7 @@ class CourseManager extends AbstractManager
      */
     public function update(array $course): bool
     {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE cid=:id");
         $statement->bindValue('id', $course['id'], PDO::PARAM_INT);
         $statement->bindValue('title', $course['title'], PDO::PARAM_STR);
 

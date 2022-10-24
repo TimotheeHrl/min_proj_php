@@ -8,28 +8,16 @@ use PDO;
 /**
  * Abstract class handling default manager.
  */
-abstract class AbstractManager
+abstract class AbstractManagerCid
 {
     protected PDO $pdo;
 
-    public const TABLE = 'tbl_course';
+    public const TABLE = '';
 
     public function __construct()
     {
         $connection = new Connection();
         $this->pdo = $connection->getConnection();
-    }
-
-    /**
-     * Get all row from database.
-     */
-    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
-    {
-        $query = 'SELECT * FROM ' . static::TABLE;
-        if ($orderBy) {
-            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
-        }
-        return $this->pdo->query($query)->fetchAll();
     }
 
     /**
@@ -45,12 +33,26 @@ abstract class AbstractManager
         return $statement->fetch();
     }
     /**
+     * Get all row from database.
+     */
+    public function selectAll(string $orderBy = '', string $direction = 'ASC'): array
+    {
+        $query = 'SELECT * FROM ' . static::TABLE;
+        if ($orderBy) {
+            $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;
+        }
+
+        return $this->pdo->query($query)->fetchAll();
+    }
+
+
+    /**
      * Delete row form an ID
      */
     public function delete(int $id): void
     {
         // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE cid=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }
