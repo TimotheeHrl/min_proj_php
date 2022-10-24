@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>courses</h1>
+    <ul>
+        {% for item in courses %}
+            <li><a href="/courses/show?id={{ course.cid }}">{{ course.cid }}. {{ course.cfull }}</a></li>
+        {% else %}
+            <li>Nothing to display</li>
+        {% endfor %}
+    </ul>
+    <a href="/courses/add">Ajouter</a>
+{% endblock %}

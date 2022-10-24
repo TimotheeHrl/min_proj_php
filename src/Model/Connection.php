@@ -15,6 +15,7 @@ class Connection
     private string $password = DB_PASSWORD;
     private string $database = DB_NAME;
 
+
     public function __construct()
     {
         $this->connection = new PDO(

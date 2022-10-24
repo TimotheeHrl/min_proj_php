@@ -2,16 +2,15 @@ version: '2'
 services:
   db:
     image: mysql:5.7
-    container_name: php.mysql
+    container_name: php.mysqla
     env_file:
       - ./docker_env_mysql/env
     ports:
       - "850:3306"
     volumes:
-      - ./docker_env_mysql/database.sql:/docker-entrypoint-initdb.d/initial.sql
       - ./docker_env_mysql/data:/var/lib/mysql
 
-  web1:
+  weba:
     build: .
     ports:
       - "80:80"
@@ -22,5 +21,5 @@ services:
     depends_on:
       - db
 
-    container_name: web1
+    container_name: webd
 
