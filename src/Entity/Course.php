@@ -7,17 +7,17 @@ class Course
     public int $cid;
     public string $cfull;
     public string $cshort;
-    public  $cstart;
-    public  $update_date;
+    public $cstart;
+    public $updateDate;
 
 
-    public function __construct(int $cid, string $cfull, string $cshort, $cstart, $update_date)
+    public function __construct(int $cid, string $cfull, string $cshort, $cstart, $updateDate)
     {
         $this->cid = $cid;
         $this->cfull = $cfull;
         $this->cshort = $cshort;
         $this->cstart = $cstart;
-        $this->update_date = $update_date;
+        $this->updateDate = $updateDate;
     }
 
     public function getCid(): int

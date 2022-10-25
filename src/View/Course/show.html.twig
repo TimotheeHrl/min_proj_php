@@ -21,8 +21,10 @@
                      <td>{{ course.update_date }}</td>
                     <td>
                         <a href="/courses/edit?id={{ course.cid }}">edit</a>
-                        <a href="/courses/delete?id={{ course.cid }}">delete</a>
-                    </td>
+            <form action="/courses/delete" method="POST">
+        <input type="hidden" name="id" value="{{ course.cid }}">
+        <button>Delete</button>
+    </form>                    </td>
                 </tr>
    </tbody>
     </table>

@@ -18,7 +18,6 @@
         </tr>
             {% for course in courses %}
 
-    <!--       <a href="/courses/show?id={{ course.cid }}">{{ course.cid }}. {{ course.cfull }}</a></li> -->
 
                 <tr>
                     <td>{{ course.cid }}</td>
@@ -29,7 +28,10 @@
                     <td>
                         <a href="/courses/show?id={{ course.cid }}">show</a>
                         <a href="/courses/edit?id={{ course.cid }}">edit</a>
-                        <a href="/courses/delete?id={{ course.cid }}">delete</a>
+                      <form action="/courses/delete" method="POST">
+        <input type="hidden" name="id" value="{{ course.cid }}">
+        <button>Delete</button>
+    </form>
                     </td>
                 </tr>
             {% endfor %}

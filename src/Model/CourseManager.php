@@ -7,7 +7,6 @@ use App\Entity\Course;
 
 class CourseManager extends AbstractManager
 {
-
     public const TABLE = 'tbl_course';
     public const ID = 'cid';
     /**
@@ -37,7 +36,12 @@ class CourseManager extends AbstractManager
         $temps = time();
         $today = date('Y-m-d', $temps);
         var_dump($course);
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `cfull` = :cfull, `cshort` = :cshort, `cdate` = :cdate, `update_date` = :update_date WHERE cid=:cid");
+        $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
+            " SET `cfull` = :cfull,
+         `cshort` = :cshort,
+         `cdate` = :cdate,
+         `update_date` = :update_date
+         WHERE cid=:cid");
         $statement->bindValue('cid', $course['cid'], PDO::PARAM_INT);
         $statement->bindValue('cfull', $course['cfull'], PDO::PARAM_STR);
         $statement->bindValue('cshort', $course['cshort'], PDO::PARAM_STR);
