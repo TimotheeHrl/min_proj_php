@@ -13,9 +13,30 @@
 </head>
 
 <body>
-    {% block content %}{% endblock %}
-    {% block javascript %}{% endblock %}
+
+    <div class="container">
+        <header>
+            <div class="logo">
+                <a href="/"><img src="/assets/images/logo.png" alt="Logo"></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="/">Accueil</a></li>
+        <li> <a href="/courses">/courses</a> </li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+
+        <footer>
+            <p>© 1999 - Tous droits réservés</p>
+        </footer>
 </body>
+
+    {% block javascript %}{% endblock %}
 </html>
 
 

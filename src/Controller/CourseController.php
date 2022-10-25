@@ -2,18 +2,26 @@
 
 namespace App\Controller;
 
-use App\Entity\Course;
+use App\Model\AdminManager;
 use App\Model\CourseManager;
+//call the AbstractController islogin function to check if the user is logged in
+
 
 class CourseController extends AbstractController
 {
+
+
     public const TABLE = 'tbl_course';
     public const ID = 'cid';
-    /**
-     * List items
-     */
+
+
+
+
     public function index(): string
     {
+        // call a static function
+        AbstractController::islogin();
+
         $courseManager = new CourseManager();
         $courses = $courseManager->selectAll('cfull');
         return $this->twig->render('Course/index.html.twig', ['courses' => $courses]);
