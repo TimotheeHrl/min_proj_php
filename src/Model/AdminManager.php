@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use PDO;
-use App\\Course;
 
 class AdminManager extends AbstractManager
 {
