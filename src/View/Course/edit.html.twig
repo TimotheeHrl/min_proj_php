@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>Edit item {{ course.cfull }}</h1>
-    {% include 'Item/_form.html.twig' %}
-    <a href="/courses/show?id={{ course.id }}">Back</a>
+    <h1>COurse item {{ course.cfull }}</h1>
+    {% include 'Course/_form.html.twig' %}
+    <a href="/courses/show?id={{ course.cid }}">Back</a>
 {% endblock %}

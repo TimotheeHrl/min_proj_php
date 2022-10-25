@@ -14,4 +14,8 @@ return [
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
     'courses' => ['CourseController', 'index',],
+    'courses/show' => ['CourseController', 'show', ['id']],
+    'courses/edit' => ['CourseController', 'edit', ['id']],
+    'courses/add' => ['CourseController', 'add',],
+    'courses/delete' => ['CourseController', 'delete',],
 ];

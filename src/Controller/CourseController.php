@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Course;
 use App\Model\CourseManager;
 
 class CourseController extends AbstractController
 {
+    public const TABLE = 'tbl_course';
+    public const ID = 'cid';
     /**
      * List items
      */
@@ -23,7 +26,63 @@ class CourseController extends AbstractController
     {
         $courseManager = new CourseManager();
         $course = $courseManager->selectOneById($id);
-
         return $this->twig->render('Course/show.html.twig', ['course' => $course]);
+    }
+    public function add(): ?string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $course = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, insert and redirection
+            $courseManager = new CourseManager();
+            $id = $courseManager->insert($course);
+
+            header('Location:/courses/show?id=' . $id);
+            return null;
+        }
+
+        return $this->twig->render('Course/add.html.twig');
+    }
+    public function edit(int $id): ?string
+    {
+        $courseManager = new CourseManager();
+        $course = $courseManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // clean $_POST data
+            $course = array_map('trim', $_POST);
+
+            // TODO validations (length, format...)
+
+            // if validation is ok, update and redirection
+            $courseManager->update($course);
+
+            header('Location: /courses/show?id=' . $id);
+
+            // we are redirecting so we don't want any content rendered
+            return null;
+        }
+
+        return $this->twig->render('Course/edit.html.twig', [
+            'course' => $course,
+        ]);
+    }
+
+
+    /**
+     * Delete a specific item
+     */
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $courseManager = new CourseManager();
+            $courseManager->delete((int)$id);
+
+            header('Location:/courses');
+        }
     }
 }

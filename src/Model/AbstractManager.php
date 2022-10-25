@@ -12,8 +12,8 @@ abstract class AbstractManager
 {
     protected PDO $pdo;
 
-    public const TABLE = 'tbl_course';
-
+    public const TABLE = '';
+    public const ID = '';
     public function __construct()
     {
         $connection = new Connection();
@@ -38,19 +38,23 @@ abstract class AbstractManager
     public function selectOneById(int $id): array
     {
         // prepared request
-        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE cid=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . static::TABLE . " WHERE " . static::ID . "=:id");
+
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
         return $statement->fetch();
     }
+
     /**
      * Delete row form an ID
      */
     public function delete(int $id): void
     {
         // prepared request
-        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE id=:id");
+        $statement = $this->pdo->prepare("DELETE FROM " . static::TABLE . " WHERE " . static::ID . "=:id");
+        echo static::ID;
+        echo static::TABLE;
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
     }

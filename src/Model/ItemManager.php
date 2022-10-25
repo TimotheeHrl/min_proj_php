@@ -7,7 +7,7 @@ use PDO;
 class ItemManager extends AbstractManager
 {
     public const TABLE = 'item';
-
+    public const ID = 'id';
     /**
      * Insert new item in database
      */

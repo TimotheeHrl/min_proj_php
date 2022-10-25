@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <table>
+        <tbody>
+        <tr>
+            <td>cid</td>
+            <td>fullname </td>
+                        <td>short name </td>
+
+            <td>date </td>
+
+            <td>update </td>
+
+        </tr>
+    <tr>
+                    <td>{{ course.cid }}</td>
+                    <td>{{ course.cfull }}</td>
+                    <td>{{ course.cshort }}</td>
+                    <td>{{ course.cdate }}</td>
+                     <td>{{ course.update_date }}</td>
+                    <td>
+                        <a href="/courses/edit?id={{ course.cid }}">edit</a>
+                        <a href="/courses/delete?id={{ course.cid }}">delete</a>
+                    </td>
+                </tr>
+   </tbody>
+    </table>
+    <a href="/courses">Back</a>
+{% endblock %}

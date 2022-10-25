@@ -1,8 +1,14 @@
 {# TODO : manage errors display #}
 
 <form method="post">
+
 	<input type="hidden" value="{{ course.cid }}" name="cid">
 	<label for="cfull">cfull</label>
 	<input type="text" value="{{ course.cfull }}" name="cfull" id="cfull">
+    	<label for="cshort">cshort</label>
+	<input type="text" value="{{ course.cshort }}" name="cshort" id="cshort">
+    <label for="cdate">cdate</label>
+    <input type="date" value="{{ course.cdate }}" name="cdate" id="cshort">
+
 	<button>Submit</button>
 </form>
