@@ -15,4 +15,10 @@ return [
     'courses/add' => ['CourseController', 'add',],
     'courses/delete' => ['CourseController', 'delete',],
     'admin/login' => ['AdminController', 'login',],
+    'subjects' => ['SubjectController', 'index',],
+    'subjects/show' => ['SubjectController', 'show', ['id']],
+    'subjects/edit' => ['SubjectController', 'edit', ['id']],
+    'subjects/add' => ['SubjectController', 'add',],
+    'subjects/delete' => ['SubjectController', 'delete',],
+
 ];

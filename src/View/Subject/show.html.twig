@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <table>
+        <tbody>
+        <tr>
+            <td>cid</td>
+            <td>fullname </td>
+                        <td>short name </td>
+<td>sub1</td>
+<td>sub2</td>
+
+<td>sub3</td>
+            <td>date </td>
+
+            <td>update </td>
+
+        </tr>
+    <tr>
+                    <td>{{ subject.cid }}</td>
+                    <td>{{ subject.cfull }}</td>
+                    <td>{{ subject.cshort }}</td>
+
+                    <td>{{subject.sub1}} </td>
+                                        <td>{{subject.sub3}} </td>
+
+                    <td>{{subject.sub3}} </td>
+
+                    <td>{{ subject.dtdate }}</td>
+                     <td>{{ subject.update_date }}</td>
+                    <td>
+                        <a href="/subjects/edit?id={{ subject.cid }}">edit</a>
+            <form action="/subjects/delete" method="POST">
+        <input type="hidden" name="id" value="{{ subject.cid }}">
+        <button>Delete</button>
+    </form>                    </td>
+                </tr>
+   </tbody>
+    </table>
+    <a href="/subjects">Back</a>
+{% endblock %}

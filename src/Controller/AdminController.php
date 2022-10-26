@@ -17,7 +17,7 @@ class AdminController  extends AbstractController
             $admin = $adminManager->selectOneByLoginAndPassword($admin['loginid'], $admin['password']);
 
             if ($admin) {
-                $_SESSION['admin'] = $admin;
+
                 $cookieValue =  $admin['loginid'] . "," . $admin['password'];
 
                 setcookie(

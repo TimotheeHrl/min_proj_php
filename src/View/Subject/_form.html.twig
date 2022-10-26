@@ -1,0 +1,26 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+
+	<input type="hidden" value="{{ subject.cid }}" name="cid">
+
+	<label for="cfull">cfull</label>
+    <!-- Add a select box to choose the full name of the category -->
+    <select name="cshort" id="cshort">
+        <option value="0">Select a courses</option>
+        {% for course in courses %}
+            <option value="{{ course.cid }}">{{ course.cfull }}</option>
+        {% endfor %}
+    </select>
+    <label for="sub1">sub1</label>
+   	<input type="text" value="{{ subject.sub1 }}" name="sub1" id="sub1">
+   <label for="sub2">sub2</label>
+   	<input type="text" value="{{ subject.sub2 }}" name="sub2" id="sub2">
+       <label for="sub3">sub3</label>
+   	<input type="text" value="{{ subject.sub3 }}" name="sub3" id="sub3">
+    <input type="text" value="{{ subject.cnumber }}" name="cnumber" id="cnumber">
+    <label for="dtdate">dtdate</label>
+    <input type="date" value="{{ subject.dtdate }}" name="dtdate" id="dtdate">
+
+	<button>Submit</button>
+</form>

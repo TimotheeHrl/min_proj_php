@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>subject item {{ subject.cfull }}</h1>
+    {% include 'Subject/_form.html.twig' %}
+    <a href="/subjects/show?id={{ subject.cid }}">Back</a>
+{% endblock %}
