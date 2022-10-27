@@ -3,6 +3,8 @@ body {
     background-color: #1a1414;
 
 }
+
+
 a {
     color: #fe0b0b;
 }
@@ -20,4 +22,14 @@ h2{
 }
 ul{
     list-style:georgian;
+}
+button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }

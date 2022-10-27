@@ -2,6 +2,6 @@
 
 {% block content %}
     <h1>subject item {{ subject.cfull }}</h1>
-    {% include 'Subject/_form.html.twig' %}
-    <a href="/subjects/show?id={{ subject.cid }}">Back</a>
+    {% include 'Subject/_form.html_update.html.twig' %}
+    <a href="/subjects/show?id={{ subject.subid }}">Back</a>
 {% endblock %}

@@ -14,7 +14,7 @@ class SubjectController extends AbstractController
 
 
     public const TABLE = 'subject';
-    public const ID = 'cid';
+    public const ID = 'subid';
 
 
 

@@ -4,7 +4,7 @@
     <table>
         <tbody>
         <tr>
-            <td>cid</td>
+            <td>subid</td>
             <td>fullname </td>
                         <td>short name </td>
 <td>sub1</td>
@@ -17,7 +17,7 @@
 
         </tr>
     <tr>
-                    <td>{{ subject.cid }}</td>
+                    <td>{{ subject.subid }}</td>
                     <td>{{ subject.cfull }}</td>
                     <td>{{ subject.cshort }}</td>
 
@@ -29,9 +29,9 @@
                     <td>{{ subject.dtdate }}</td>
                      <td>{{ subject.update_date }}</td>
                     <td>
-                        <a href="/subjects/edit?id={{ subject.cid }}">edit</a>
+                        <a href="/subjects/edit?id={{ subject.subid }}">edit</a>
             <form action="/subjects/delete" method="POST">
-        <input type="hidden" name="id" value="{{ subject.cid }}">
+        <input type="hidden" name="id" value="{{ subject.subid }}">
         <button>Delete</button>
     </form>                    </td>
                 </tr>

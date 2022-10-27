@@ -8,9 +8,13 @@
     <select name="cshort" id="cshort">
         <option value="0">Select a courses</option>
         {% for course in courses %}
-
-            <option value="{{ course.cid }}:{{ course.cfull }}">{{ course.cfull }}</option>
+            {% if course.cshort == subject.cshort %}
+                <option value="{{ course.cshort }}:{{ course.cfull }}" selected>{{ course.cfull }}</option>
+            {% else %}
+                <option value="{{ course.cshort }}:{{ course.cfull }}">{{ course.cfull }}</option>
+            {% endif %}
         {% endfor %}
+
     </select>
     <label for="sub1">sub1</label>
    	<input type="text" value="{{ subject.sub1 }}" name="sub1" id="sub1">

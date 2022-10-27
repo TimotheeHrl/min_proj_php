@@ -16,6 +16,8 @@ class CourseManager extends AbstractManager
     {
         $temps = time();
         $today = date('Y-m-d', $temps);
+        // random number for course code
+        $cid = rand(1000, 9999);
 
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`cfull`, `cshort`,`cdate`, `update_date`) VALUES (:cfull, :cshort,:cdate,:update_date)");
