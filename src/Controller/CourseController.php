@@ -60,17 +60,11 @@ class CourseController extends AbstractController
         $course = $courseManager->selectOneById($id);
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
             $course = array_map('trim', $_POST);
-
-            // TODO validations (length, format...)
-
-            // if validation is ok, update and redirection
             $courseManager->update($course);
 
             header('Location: /courses/show?id=' . $id);
 
-            // we are redirecting so we don't want any content rendered
             return null;
         }
 

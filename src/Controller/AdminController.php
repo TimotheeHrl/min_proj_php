@@ -37,8 +37,13 @@ class AdminController  extends AbstractController
 
     public function logout(): void
     {
-        session_destroy();
-        setcookie('loginid', '', time() - 3600);
-        header('Location:/');
+
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            if (isset($_COOKIE['logincookie'])) {
+                unset($_COOKIE['logincookie']);
+                setcookie('logincookie', 'nonnon', time() - 3600, '/');
+            }
+            header('Location:/');
+        }
     }
 }

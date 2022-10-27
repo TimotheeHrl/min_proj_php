@@ -8,12 +8,9 @@ class SubjectManager extends AbstractManager
 {
     public const TABLE = 'subject';
     public const ID = 'subid';
-    /**
-     * Insert new item in database
-     */
+
     public function insert(array $subject): int
     {
-
         $temps = time();
         $today = date('Y-m-d', $temps);
         $cshortAndCfull = $subject['cshort'];

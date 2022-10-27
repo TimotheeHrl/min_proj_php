@@ -27,7 +27,7 @@ abstract class AbstractController
         );
         $this->twig->addExtension(new DebugExtension());
     }
-    public function islogin(): bool
+    public function islogin(): void
     {
         if (isset($_COOKIE['logincookie'])) {
             $logincookie = $_COOKIE['logincookie'];
@@ -37,11 +37,10 @@ abstract class AbstractController
             $adminManager = new AdminManager();
             $admin = $adminManager->selectOneByLoginAndPassword($loginid, $password);
             if (!$admin) {
-                return false;
+                header('Location:/admin/login');
             }
         } else {
-            return false;
+            header('Location:/admin/login');
         }
-        return true;
     }
 }
