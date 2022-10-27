@@ -15,25 +15,28 @@
 <body>
 
     <div class="container">
-        <header>
+       <div>
+       <div  style="display: flex; flex-direction: row; justify-content: space-between;">
+            <header>
+                <nav style="margin-top: 200px;">
+                    <ul>
+                        <li><a href="/">Accueil</a></li>
+                        <li><a href="/courses">Courses</a></li>
+                         <li><a href="/subjects">subject</a></li>
 
-            <div class="menu">
-                <ul>
-                    <li><a href="/">Accueil</a></li>
-        <li> <a href="/courses">courses</a> </li>
-                <li> <a href="/subjects">subjects</a> </li>
+                    </ul>
+                </nav>
+            </header>
 
-                </ul>
-            </div>
-        </header>
-
-        <div class="content">
-            {% block content %}{% endblock %}
+            <main style="margin-left: 75px;">
+                {% block content %}{% endblock %}
+            </main>
+</div>
+            <footer>
+                <p>© 2022 - Tous droits réservés</p>
+            </footer>
         </div>
-
-        <footer>
-            <p>© 1999 - Tous droits réservés</p>
-        </footer>
+    </div>
 </body>
 
     {% block javascript %}{% endblock %}
