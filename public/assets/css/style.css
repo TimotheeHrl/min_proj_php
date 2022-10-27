@@ -11,6 +11,11 @@ a:hover {
 }
 
 h1{
+     text-align: center;
+    color: #b601b6;
+}
+h2{
+    text-align: center;
     color: #21d006;
 }
 ul{
