@@ -1,0 +1,60 @@
+{# TODO : manage errors display #}
+
+<form method="post">
+
+
+	<label for="course">Course</label>
+    <select name="course" id="course">
+        <option value="0">Select a course</option>
+        {% for course in courses %}
+
+            <option value="{{ course.cid }}">{{ course.cfull }}</option>
+        {% endfor %}
+    </select>
+
+     <select name="subject" id="subject">
+        <option value="0">Select a courses</option>
+        {% for subject in subjects %}
+
+            <option value="{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}">{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}</option>
+        {% endfor %}
+    </select>
+
+ <label for="session">session</label>
+ <p>{{session.session}}</p>
+   	<input type="hidden" value="{{ session.session }}" name="session" id="session">
+
+    <label for="fname">fname</label>
+   	<input type="text" value="" name="fname" id="fname">
+   <label for="mname">mname</label>
+   	<input type="text" value="" name="mname" id="mname">
+   <label for="gender">gender</label>
+         <select name="gender" id="gender">
+        <option value="Female">Female</option>
+         <option value="Male">Male</option>
+                  <option value="other">other</option>
+    </select>
+    <label for="nationality">nationality</label>
+    <input type="text" value="" name="nationality" id="nationality">
+
+
+
+     <select name="city" id="city">
+        <option value="0">Select a city</option>
+        {% for city in cities %}
+
+            <option value="{{ city.name }}:{{ city.state_id }}">{{ city.name }}</option>
+        {% endfor %}
+    </select>
+
+     <select name="country" id="country">
+        <option value="0">Select a country</option>
+        {% for country in countries %}
+
+            <option value="{{ country.name }}">{{ country.name }}</option>
+        {% endfor %}
+    </select>
+
+
+	<button>Submit</button>
+</form>

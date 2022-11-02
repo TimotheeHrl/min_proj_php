@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <h1>registration</h1>
+
+     <table>
+        <tbody>
+        <tr>
+            <td>id</td>
+            <td>subject </td>
+                        <td>short name </td>
+<td>fname</td>
+<td>mname</td>
+
+<td>gender</td>
+
+            <td>nationality </td>
+
+            <td>country </td>
+      <td>state </td>
+          <td>session </td>
+              <td>regno </td>
+        </tr>
+                <tr>
+                    <td>{{ registration.id }}</td>
+                    <td>{{ registration.subject }}</td>
+                    <td>{{ registration.fname }}</td>
+                    <td>{{ registration.mname }}</td>
+                    <td>{{ registration.gender }}</td>
+                    <td>{{ registration.nationality }}</td>
+                    <td>{{ registration.country }}</td>
+                    <td>{{ registration.state }}</td>
+                    <td>{{ registration.session }}</td>
+                    <td>{{ registration.regno }}</td>
+     <td>
+                        <a href="/registrations/show?id={{ registration.id }}">show</a>
+                        <a href="/registrations/edit?id={{ registration.id }}">edit</a>
+                      <form action="/registrations/delete" method="POST">
+        <input type="hidden" name="id" value="{{ registration.id }}">
+        <button>Delete</button>
+        </td>
+    </form>
+
+ </tbody>
+    </table>
+{% endblock %}

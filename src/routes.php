@@ -22,5 +22,12 @@ return [
     'subjects/edit' => ['SubjectController', 'edit', ['id']],
     'subjects/add' => ['SubjectController', 'add',],
     'subjects/delete' => ['SubjectController', 'delete',],
+    'sessions' => ['SessionController', 'index',],
+    'registrations' => ['RegistrationController', 'index',],
+    'registrations/show' => ['RegistrationController', 'show', ['id']],
+    'registrations/edit' => ['RegistrationController', 'edit', ['id']],
+    'registrations/add' => ['RegistrationController', 'add',],
+    'registrations/delete' => ['RegistrationController', 'delete',],
+
 
 ];

@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<div class="center">
+    <h1>sessions</h1>
+
+    <form  method="post">
+        <table>
+            <tr>
+                <th>Sessions</th>
+
+            </tr>
+
+
+                        <radio>
+
+            {% for session in sessions %}
+            <tr>
+
+            {% if session.status == 1%}
+             <td>{{ session.session }}</td>
+
+                <td><input type="radio" name="id" id="id" value="{{ session.id }}" checked></td>
+
+            {% else %}
+       <td>{{ session.session }}</td>
+
+                <td><input type="radio" name="id" id="id" value="{{ session.id }}"  ></td>
+            {% endif %}
+            </tr>
+               </radio>
+
+
+
+            </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="select">
+    </form>
+
+
+
+</div>
+
+
+{% endblock %}
