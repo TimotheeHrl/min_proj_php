@@ -64,12 +64,10 @@
      <select name="city" id="city">
         <option value="{{registration.padd }}">Select a city</option>
         {% for city in cities %}
-        {% set cityLikeRegistration = city.name ~ ":" ~ city.state_id %}
-<p>{{cityLikeRegistration}}</p>
-            {% if cityLikeRegistration == registration.padd %}
-                <option value="{{ city.name }}:{{ city.state_id }}" selected>{{ city.name }}:{{ city.state_id }}</option>
+            {% if  city.name  == registration.padd %}
+                <option value="{{ city.name }}:{{ city.state_id }}" selected>{{ city.name }}</option>
             {% else %}
-                <option value="{{ city.name }}:{{ city.state_id }}">{{ city.name }}:{{ city.state_id }}</option>
+                <option value="{{ city.name }}:{{ city.state_id }}">{{ city.name }}</option>
             {% endif %}
 
         {% endfor %}

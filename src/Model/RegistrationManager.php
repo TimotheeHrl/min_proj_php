@@ -14,9 +14,9 @@ class RegistrationManager extends AbstractManager
         // random number
         $random = rand(100000, 999999);
         $randomString = (string)$random;
-
-
-
+        $city_Arr = explode(":", $registration['city']);
+        $city_name = $city_Arr[0];
+        $city_code = (string)$city_Arr[1];
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (course, subject, fname, mname, gender, nationality, country, state,padd,session,regno)
         VALUES (:course, :subject, :fname, :mname, :gender, :nationality, :country, :state,:padd, :session, :regno)");
@@ -27,8 +27,8 @@ class RegistrationManager extends AbstractManager
         $statement->bindValue('gender', $registration['gender'], PDO::PARAM_STR);
         $statement->bindValue('nationality', $registration['nationality'], PDO::PARAM_STR);
         $statement->bindValue('country', $registration['country'], PDO::PARAM_STR);
-        $statement->bindValue('state', $registration['city'], PDO::PARAM_STR);
-        $statement->bindValue('padd', $registration['city'], PDO::PARAM_STR);
+        $statement->bindValue('state', $city_code, PDO::PARAM_STR);
+        $statement->bindValue('padd', $city_name, PDO::PARAM_STR);
         $statement->bindValue('session', $registration['session'], PDO::PARAM_STR);
         $statement->bindValue('regno', $randomString, PDO::PARAM_STR);
         $statement->execute();
@@ -36,7 +36,9 @@ class RegistrationManager extends AbstractManager
     }
     public function update(array $registration)
     {
-
+        $city_Arr = explode(":", $registration['city']);
+        $city_name = $city_Arr[0];
+        $city_code = (string)$city_Arr[1];
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
             " SET course = :course,
             subject = :subject,
@@ -58,11 +60,10 @@ class RegistrationManager extends AbstractManager
         $statement->bindValue('gender', $registration['gender'], PDO::PARAM_STR);
         $statement->bindValue('nationality', $registration['nationality'], PDO::PARAM_STR);
         $statement->bindValue('country', $registration['country'], PDO::PARAM_STR);
-        $statement->bindValue('state', $registration['city'], PDO::PARAM_STR);
-        $statement->bindValue('padd', $registration['city'], PDO::PARAM_STR);
+        $statement->bindValue('state', $city_code, PDO::PARAM_STR);
+        $statement->bindValue('padd', $city_name, PDO::PARAM_STR);
         $statement->bindValue('session', $registration['session'], PDO::PARAM_STR);
         $statement->bindValue('regno', $registration['regno'], PDO::PARAM_STR);
-
         $statement->execute();
     }
 

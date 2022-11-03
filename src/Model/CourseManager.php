@@ -35,7 +35,7 @@ class CourseManager extends AbstractManager
     {
         $temps = time();
         $today = date('Y-m-d', $temps);
-        var_dump($course);
+
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
             " SET `cfull` = :cfull,
          `cshort` = :cshort,
