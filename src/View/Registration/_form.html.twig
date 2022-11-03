@@ -11,33 +11,39 @@
             <option value="{{ course.cid }}">{{ course.cfull }}</option>
         {% endfor %}
     </select>
+    <br>
+
+	<label for="subject">subject</label>
 
      <select name="subject" id="subject">
-        <option value="0">Select a courses</option>
+        <option value="0">Select a subject</option>
         {% for subject in subjects %}
 
             <option value="{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}">{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}</option>
         {% endfor %}
     </select>
-
+<br>
  <label for="session">session</label>
  <p>{{session.session}}</p>
    	<input type="hidden" value="{{ session.session }}" name="session" id="session">
-
+<br>
     <label for="fname">fname</label>
    	<input type="text" value="" name="fname" id="fname">
+  <br>
    <label for="mname">mname</label>
    	<input type="text" value="" name="mname" id="mname">
+   <br>
    <label for="gender">gender</label>
          <select name="gender" id="gender">
         <option value="Female">Female</option>
          <option value="Male">Male</option>
                   <option value="other">other</option>
     </select>
+   <br>
     <label for="nationality">nationality</label>
     <input type="text" value="" name="nationality" id="nationality">
 
-
+<br>
 
      <select name="city" id="city">
         <option value="0">Select a city</option>
@@ -46,7 +52,7 @@
             <option value="{{ city.name }}:{{ city.state_id }}">{{ city.name }}</option>
         {% endfor %}
     </select>
-
+<br>
      <select name="country" id="country">
         <option value="0">Select a country</option>
         {% for country in countries %}

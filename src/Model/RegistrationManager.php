@@ -13,14 +13,12 @@ class RegistrationManager extends AbstractManager
     {
         // random number
         $random = rand(100000, 999999);
-        $random = (string)$random;
+        $randomString = (string)$random;
 
-        //   $cityName = explode(':', $registration['city'])[0];
-        //   $cityState = explode(':', $registration['city'])[1];
 
 
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
-            " ('course', 'subject', 'fname', 'mname', 'gender',  'nationality', 'country', 'state','padd', 'session', 'regno')
+            " (course, subject, fname, mname, gender, nationality, country, state,padd,session,regno)
         VALUES (:course, :subject, :fname, :mname, :gender, :nationality, :country, :state,:padd, :session, :regno)");
         $statement->bindValue('course', $registration['course'], PDO::PARAM_STR);
         $statement->bindValue('subject', $registration['subject'], PDO::PARAM_STR);
@@ -32,26 +30,40 @@ class RegistrationManager extends AbstractManager
         $statement->bindValue('state', $registration['city'], PDO::PARAM_STR);
         $statement->bindValue('padd', $registration['city'], PDO::PARAM_STR);
         $statement->bindValue('session', $registration['session'], PDO::PARAM_STR);
-        $statement->bindValue('regno', $random, PDO::PARAM_STR);
-
-        var_dump($statement);
-        die();
-        return $statement->execute();
+        $statement->bindValue('regno', $randomString, PDO::PARAM_STR);
+        $statement->execute();
+        return  (int)$this->pdo->lastInsertId();
     }
-    public function update(array $subject)
+    public function update(array $registration)
     {
 
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-            " SET `course` = :course,
-            `subject` = :subject,
-            `fname` = :fname,
-            `mname` = :mname,
+            " SET course = :course,
+            subject = :subject,
+            fname = :fname,
+            mname = :mname,
+            gender= :gender,
+            nationality =:nationality,
+            country =:country,
+            state =:state,
+            padd =:padd,
+            session =:session,
+            regno =:regno
              WHERE id=:id");
-        $statement->bindValue('id', $subject['id'], PDO::PARAM_INT);
-        $statement->bindValue('course', $subject['course'], PDO::PARAM_STR);
-        $statement->bindValue('subject', $subject['subject'], PDO::PARAM_STR);
-        $statement->bindValue('fname', $subject['fname'], PDO::PARAM_STR);
-        $statement->bindValue('mname', $subject['mname'], PDO::PARAM_STR);
+        $statement->bindValue('id', $registration['id'], PDO::PARAM_INT);
+        $statement->bindValue('course', $registration['course'], PDO::PARAM_STR);
+        $statement->bindValue('subject', $registration['subject'], PDO::PARAM_STR);
+        $statement->bindValue('fname', $registration['fname'], PDO::PARAM_STR);
+        $statement->bindValue('mname', $registration['mname'], PDO::PARAM_STR);
+        $statement->bindValue('gender', $registration['gender'], PDO::PARAM_STR);
+        $statement->bindValue('nationality', $registration['nationality'], PDO::PARAM_STR);
+        $statement->bindValue('country', $registration['country'], PDO::PARAM_STR);
+        $statement->bindValue('state', $registration['city'], PDO::PARAM_STR);
+        $statement->bindValue('padd', $registration['city'], PDO::PARAM_STR);
+        $statement->bindValue('session', $registration['session'], PDO::PARAM_STR);
+        $statement->bindValue('regno', $registration['regno'], PDO::PARAM_STR);
+
+        $statement->execute();
     }
 
     public function getAllCities(): array
@@ -63,5 +75,12 @@ class RegistrationManager extends AbstractManager
     {
         $statement = $this->pdo->query("SELECT * FROM countries");
         return $statement->fetchAll();
+    }
+
+    public function delete(int $id): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
+        $statement->bindValue('id', $id, PDO::PARAM_INT);
+        $statement->execute();
     }
 }

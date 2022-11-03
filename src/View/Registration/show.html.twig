@@ -8,7 +8,6 @@
         <tr>
             <td>id</td>
             <td>subject </td>
-                        <td>short name </td>
 <td>fname</td>
 <td>mname</td>
 
@@ -33,7 +32,6 @@
                     <td>{{ registration.session }}</td>
                     <td>{{ registration.regno }}</td>
      <td>
-                        <a href="/registrations/show?id={{ registration.id }}">show</a>
                         <a href="/registrations/edit?id={{ registration.id }}">edit</a>
                       <form action="/registrations/delete" method="POST">
         <input type="hidden" name="id" value="{{ registration.id }}">
@@ -43,4 +41,5 @@
 
  </tbody>
     </table>
+    <a href="/registrations">back</a>
 {% endblock %}

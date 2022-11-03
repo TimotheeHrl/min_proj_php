@@ -1,28 +1,94 @@
 {# TODO : manage errors display #}
 
 <form method="post">
+	<input type="hidden" value="{{ registration.id }}" name="id">
+	<input type="hidden" value="{{ registration.regno }}" name="regno">
 
-	<input type="hidden" value="{{ subject.subid }}" name="subid">
-
-	<label for="cfull">cfull</label>
-    <select name="cshort" id="cshort">
+	<label for="course">course</label>
+    <select name="course" id="course">
         <option value="0">Select a courses</option>
         {% for course in courses %}
-            {% if course.cshort == subject.cshort %}
-                <option value="{{ course.cshort }}:{{ course.cfull }}" selected>{{ course.cfull }}</option>
+            {% if course.cid == registration.course %}
+                <option value="{{ course.cid }}" selected>{{ course.cfull }}</option>
             {% else %}
-                <option value="{{ course.cshort }}:{{ course.cfull }}">{{ course.cfull }}</option>
+                <option value="{{ course.cid }}">{{ course.cfull }}</option>
             {% endif %}
         {% endfor %}
-
     </select>
-    <label for="sub1">sub1</label>
-   	<input type="text" value="{{ subject.sub1 }}" name="sub1" id="sub1">
-   <label for="sub2">sub2</label>
-   	<input type="text" value="{{ subject.sub2 }}" name="sub2" id="sub2">
-       <label for="sub3">sub3</label>
-   	<input type="text" value="{{ subject.sub3 }}" name="sub3" id="sub3">
+    <br>
 
+    <label for="subject">subject</label>
+     <select name="subject" id="subject">
+        <option value="0">Select a courses</option>
+        {% for subject in subjects %}
+        {% set subjectLikeRegistration = subject.cfull ~ "+" ~ subject.sub1 ~ "+" ~ subject.sub2 %}
+            {% if subjectLikeRegistration == registration.subject %}
+                <option value="{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}" selected>{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}</option>
+            {% else %}
+                <option value="{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}">{{ subject.cfull }}+{{ subject.sub1 }}+{{subject.sub2}}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+<br>
 
+ <label for="session">session</label>
+ <p>{{session.session}}</p>
+   	<input type="hidden" value="{{ session.session }}" name="session" id="session">
+<br>
+    <label for="fname">fname</label>
+   	<input type="text" value="{{registration.fname}}" name="fname" id="fname">
+  <br>
+   <label for="mname">mname</label>
+   	<input type="text" value="{{registration.mname}}" name="mname" id="mname">
+   <br>
+   <label for="gender">gender</label>
+
+         <select name="gender" id="gender">
+                  {% for gender in genders %}
+
+           {% if gender == registration.gender %}
+                <option value="{{ gender }}" selected>{{ gender }}</option>
+            {% else %}
+                <option value="{{ gender}}">{{ gender }}</option>
+            {% endif %}
+        {% endfor %}
+    </select>
+<br>
+
+    <label for="nationality">nationality</label>
+    <input type="text" value="{{registration.nationality}}" name="nationality" id="nationality">
+<br>
+
+    <label for="city">city</label>
+
+     <select name="city" id="city">
+        <option value="{{registration.padd }}">Select a city</option>
+        {% for city in cities %}
+        {% set cityLikeRegistration = city.name ~ ":" ~ city.state_id %}
+<p>{{cityLikeRegistration}}</p>
+            {% if cityLikeRegistration == registration.padd %}
+                <option value="{{ city.name }}:{{ city.state_id }}" selected>{{ city.name }}:{{ city.state_id }}</option>
+            {% else %}
+                <option value="{{ city.name }}:{{ city.state_id }}">{{ city.name }}:{{ city.state_id }}</option>
+            {% endif %}
+
+        {% endfor %}
+    </select>
+    <br>
+    <label for="country">country</label>
+
+     <select name="country" id="country">
+        <option value="{{country.name }}">Select a country</option>
+        {% for country in countries %}
+          {% if country.name == registration.country %}
+                <option value="{{ country.name}}" selected>{{ country.name }}</option>
+            {% else %}
+                <option value="{{country.name }}">{{ country.name  }}</option>
+            {% endif %}
+
+        {% endfor %}
+    </select>
+
+<br>
 	<button>Submit</button>
 </form>

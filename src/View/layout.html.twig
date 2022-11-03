@@ -15,7 +15,7 @@
 <body>
 
     <div class="container">
-       <div>
+       <div   style="justify-content: right; position:absolute; right:20px; top:20px">
 
 
 <button > <a href="/admin/logout">logout</a></button>
@@ -24,7 +24,7 @@
        </div>
 
     </form>
-       <div  style="display: flex; flex-direction: row; justify-content: space-between;">
+       <div  style="display: flex; flex-direction: row; ">
             <header>
                 <nav style="margin-top: 200px;">
                     <ul>
@@ -38,11 +38,11 @@
                 </nav>
             </header>
 
-            <main style="padding: 10px;">
+            <main style="padding: 75px; justify-content: center">
                 {% block content %}{% endblock %}
             </main>
 </div>
-            <footer>
+            <footer style="justify-content: right; position:absolute; right:20px; bottom:20px">
                 <p>© 2022 - Tous droits réservés</p>
             </footer>
         </div>

@@ -1,7 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h1>subject item {{ subject.cfull }}</h1>
-    {% include 'Subject/_form.html_update.html.twig' %}
-    <a href="/subjects/show?id={{ subject.subid }}">Back</a>
+    <h1>registration item {{ registration.fname }} {{registration.mname}}</h1>
+    {% include 'Registration/_form.html_update.html.twig' %}
+    <a href="/registrations/show?id={{ registration.id }}">Back</a>
 {% endblock %}

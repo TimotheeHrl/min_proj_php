@@ -29,7 +29,11 @@ class RegistrationController extends AbstractController
         $cities = $registrationManager->getAllCities();
         $countries = $registrationManager->getAllCountries();
         // get cookie value
-        $session_id = $_COOKIE['session_id'];
+        $session_id = 1;
+        if (!empty($_COOKIE["session_id"])) {
+            $session_id = $_COOKIE["session_id"];
+        }
+
         $sessionM = new SessionManager();
         $session = $sessionM->selectOneById($session_id);
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -69,9 +73,21 @@ class RegistrationController extends AbstractController
         $session = new SessionManager();
         $sessions = $session->selectAll('session');
         $subject = new SubjectManager();
-        $subjects = $subject->selectAll('subject');
+        $subjects = $subject->selectAll('cfull');
         $course = new CourseManager();
-        $courses = $course->selectAll('course');
+        $courses = $course->selectAll('cfull');
+        $registrationManager = new RegistrationManager();
+        $cities = $registrationManager->getAllCities();
+        $countries = $registrationManager->getAllCountries();
+        $genders = ['Female', 'Male', 'other'];
+        // get cookie value
+        $session_id = 1;
+        if (!empty($_COOKIE["session_id"])) {
+            $session_id = $_COOKIE["session_id"];
+        }
+
+        $sessionM = new SessionManager();
+        $session = $sessionM->selectOneById($session_id);
         $registrationManager = new RegistrationManager();
         $registration = $registrationManager->selectOneById($id);
 
@@ -82,6 +98,7 @@ class RegistrationController extends AbstractController
             // TODO validations (length, format...)
 
             // if validation is ok, insert and redirection
+
             $registrationManager = new RegistrationManager();
             $registrationManager->update($registration);
 
@@ -89,7 +106,19 @@ class RegistrationController extends AbstractController
             return null;
         }
 
-        return $this->twig->render('Registration/edit.html.twig', ['registration' => $registration]);
+        return $this->twig->render(
+            'Registration/edit.html.twig',
+            [
+                'registration' => $registration,
+                'sessions' => $sessions,
+                'subjects' => $subjects,
+                'courses' => $courses,
+                'cities' => $cities,
+                'countries' => $countries,
+                'session' => $session,
+                'genders' => $genders,
+            ]
+        );
     }
 
     public function delete(int $id): void
